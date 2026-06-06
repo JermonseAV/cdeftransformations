@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carpe Diem Elite Fitness & Transformations</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dark: #8B6914;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --dark-2: #1A1A1A;
+    --dark-3: #242424;
+    --white: #F8F5EF;
+    --white-muted: #C8C4BC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.5rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(201,168,76,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white-muted);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 5% 8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.7) 60%, var(--black) 100%),
+      linear-gradient(135deg, #0a0a0a 0%, #1a1505 50%, #0a0a0a 100%);
+    z-index: 0;
+  }
+
+  .hero-ornament {
+    position: absolute; top: 30%; right: 5%;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(201,168,76,0.06) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .hero-line-top {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 0.5px; height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+    z-index: 1;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 2.5rem;
+    color: var(--white);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-tagline {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white-muted);
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 0.5px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    transition: all 0.4s;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  .hero-pillars {
+    position: absolute; right: 5%; bottom: 8rem;
+    z-index: 1;
+    display: flex; flex-direction: column; gap: 0.8rem; align-items: flex-end;
+  }
+
+  .hero-pillar {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+    font-weight: 300;
+  }
+
+  /* SECTION BASE */
+  section { padding: 8rem 5%; }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 2rem;
+  }
+
+  .gold-rule {
+    width: 60px; height: 0.5px;
+    background: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ABOUT */
+  .about { background: var(--dark); }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .about-text p {
+    color: var(--white-muted);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .about-pillars {
+    display: grid; gap: 2px;
+    align-self: center;
+  }
+
+  .pillar-item {
+    padding: 1.8rem 2rem;
+    background: var(--dark-2);
+    border-left: 1.5px solid var(--gold);
+    transition: background 0.3s;
+  }
+
+  .pillar-item:hover { background: var(--dark-3); }
+
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+
+  .pillar-desc {
+    font-size: 0.75rem;
+    color: var(--white-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* SERVICES */
+  .services { background: var(--black); }
+
+  .services-header {
+    max-width: 1200px; margin: 0 auto 5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end;
+  }
+
+  .services-intro {
+    font-size: 0.85rem;
+    color: var(--white-muted);
+    line-height: 1.9;
+    font-weight: 300;
+    grid-column: 2;
+  }
+
+  .services-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.12);
+  }
+
+  .service-card {
+    background: var(--black);
+    padding: 3rem 2.5rem;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover { background: var(--dark-2); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    color: rgba(201,168,76,0.12);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .service-desc {
+    font-size: 0.75rem;
+    color: var(--white-muted);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* METHOD / PATHWAY */
+  .pathway { background: var(--dark); }
+
+  .pathway-inner { max-width: 1200px; margin: 0 auto; }
+
+  .pathway-header {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; margin-bottom: 5rem; align-items: end;
+  }
+
+  .pathway-steps {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    background: rgba(201,168,76,0.1);
+  }
+
+  .step-card {
+    background: var(--dark);
+    padding: 3.5rem 3rem;
+  }
+
+  .step-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .step-body {
+    font-size: 0.78rem;
+    color: var(--white-muted);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  /* WHY */
+  .why { background: var(--black); }
+
+  .why-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: center;
+  }
+
+  .why-reasons {
+    display: flex; flex-direction: column; gap: 0;
+  }
+
+  .why-reason {
+    padding: 1.6rem 0;
+    border-bottom: 0.5px solid rgba(201,168,76,0.12);
+    display: flex; gap: 2rem; align-items: flex-start;
+  }
+
+  .reason-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 400;
+    min-width: 20px;
+    margin-top: 3px;
+  }
+
+  .reason-text strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--white);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .reason-text span {
+    font-size: 0.75rem;
+    color: var(--white-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .why-quote {
+    padding: 4rem;
+    background: var(--dark-2);
+    border-top: 1.5px solid var(--gold);
+    position: relative;
+  }
+
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    color: rgba(201,168,76,0.1);
+    line-height: 0;
+    position: absolute;
+    top: 3rem; left: 3rem;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.55;
+    margin-bottom: 2rem;
+    position: relative; z-index: 1;
+  }
+
+  .quote-attr {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* CLIENTELE */
+  .clientele { background: var(--dark); }
+
+  .clientele-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start;
+  }
+
+  .client-types {
+    display: flex; flex-wrap: wrap; gap: 0.7rem;
+  }
+
+  .client-tag {
+    padding: 0.6rem 1.3rem;
+    border: 0.5px solid rgba(201,168,76,0.3);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-muted);
+    font-weight: 300;
+    transition: all 0.3s;
+  }
+
+  .client-tag:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--dark-2);
+    text-align: center;
+  }
+
+  .contact-inner {
+    max-width: 700px; margin: 0 auto;
+  }
+
+  .contact-promise {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+
+  .contact-promise em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .contact-sub {
+    font-size: 0.75rem;
+    color: var(--white-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+  }
+
+  .contact-btn {
+    display: inline-block;
+    padding: 1.1rem 3.5rem;
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .contact-btn:hover {
+    background: var(--gold-light);
+  }
+
+  .contact-note {
+    margin-top: 2rem;
+    font-size: 0.65rem;
+    color: rgba(200,196,188,0.45);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    padding: 3rem 5%;
+    display: flex;
+    justify-content: space-between; align-items: center;
+    border-top: 0.5px solid rgba(201,168,76,0.15);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .footer-copy {
+    font-size: 0.6rem;
+    color: rgba(200,196,188,0.35);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: rgba(201,168,76,0.4);
+    font-style: italic;
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 1200px; margin: 0 auto;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+  }
+
+  @media (max-width: 900px) {
+    .about-inner,
+    .services-header,
+    .pathway-header,
+    .why-inner,
+    .clientele-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .services-grid,
+    .pathway-steps { grid-template-columns: 1fr; }
+
+    .services-intro { grid-column: 1; }
+
+    .hero-pillars { display: none; }
+
+    .nav-links { display: none; }
+
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Carpe Diem</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pathway">Method</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Enquire</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-line-top"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Carpe Diem Elite Fitness &amp; Transformations</p>
+    <h1 class="hero-title">
+      Your Strongest<br>
+      Chapter <em>Starts</em><br>
+      Here.
+    </h1>
+    <p class="hero-tagline">Precision &nbsp;·&nbsp; Performance &nbsp;·&nbsp; Transformation</p>
+    <a href="#contact" class="hero-cta">Begin Your Journey</a>
+  </div>
+  <div class="hero-pillars">
+    <span class="hero-pillar">Luxury Positioning</span>
+    <span class="hero-pillar">Confidential Client Handling</span>
+    <span class="hero-pillar">Recovery to Performance</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <p class="section-label">About the Brand</p>
+      <h2 class="section-title">A Higher Standard of Transformation</h2>
+      <div class="gold-rule"></div>
+      <div class="about-text">
+        <p>Carpe Diem Elite Fitness &amp; Transformations is a premium, consultation-led transformation brand dedicated to clients who seek a higher standard of recovery, physique enhancement, aesthetic refinement, and performance support.</p>
+        <p>The brand is built for individuals who do not want generic wellness solutions — for those who expect structured guidance, individualized planning, privacy, and an elevated service experience tailored to personal goals and professional image.</p>
+        <p>Our offering extends into skin-health and appearance-focused advisory through consultations with reputed dermatology professionals and qualified doctors, supporting safer decision-making and ethically guided transformation pathways.</p>
+      </div>
+    </div>
+    <div class="about-pillars">
+      <div class="pillar-item">
+        <div class="pillar-title">Bespoke</div>
+        <div class="pillar-desc">Every program is tailored to individual goals, physiology, and readiness. No two transformations are the same.</div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-title">Clinical</div>
+        <div class="pillar-desc">Assessment-led decision making with suitability screening and continuous monitoring at the forefront.</div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-title">Confidential</div>
+        <div class="pillar-desc">Every client file, assessment, and communication is handled with the highest standard of discretion.</div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-title">Exclusive</div>
+        <div class="pillar-desc">Designed for high-intent clients who expect elevated standards in every aspect of their transformation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <p class="section-label">Specialisations</p>
+      <h2 class="section-title">What We Offer</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <p class="services-intro">A transformation ecosystem where structure, science, confidentiality, presentation, and purpose work together to create visible, sustainable change.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <div class="service-name">Post-Surgery Rehabilitation &amp; Recovery</div>
+      <div class="service-desc">Structured, medically aligned recovery pathways guiding clients through rehabilitation following surgical procedures.</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <div class="service-name">Performance &amp; Transformation Programs</div>
+      <div class="service-desc">Customised programs designed around each client's unique physiology, health markers, and personal goals.</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <div class="service-name">Clinical Assessment &amp; Baseline Profiling</div>
+      <div class="service-desc">Comprehensive blood panel evaluations, hormonal profiling, metabolic screening, and organ function assessment.</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <div class="service-name">Cycle-Based Performance Protocols</div>
+      <div class="service-desc">Evidence-informed, medically supervised plans tailored to individual compatibility and clinical clearance.</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">05</span>
+      <div class="service-name">Skin Nourishment &amp; Aesthetic Guidance</div>
+      <div class="service-desc">Premium consultation-led support for skin hydration, barrier health, radiance, and overall aesthetic refinement.</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">06</span>
+      <div class="service-name">Actor &amp; Performer Transformation Support</div>
+      <div class="service-desc">Specialised physique and appearance planning for aspiring actors, performers, models, and public-facing individuals.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PATHWAY -->
+<section class="pathway" id="pathway">
+  <div class="pathway-inner">
+    <div class="pathway-header">
+      <div>
+        <p class="section-label">Method</p>
+        <h2 class="section-title">The Carpe Diem Pathway</h2>
+        <div class="gold-rule"></div>
+      </div>
+      <p style="font-size:0.85rem;color:var(--white-muted);font-weight:300;line-height:1.9;">Every engagement follows a structured, premium process — from initial clinical review through to long-term continuity planning. Transformation approached as a monitored journey, not a short-term intervention.</p>
+    </div>
+    <div class="pathway-steps">
+      <div class="step-card">
+        <div class="step-label">Stage 01</div>
+        <div class="step-title">Clinical Assessment &amp; Eligibility Review</div>
+        <div class="step-body">Health history mapping, baseline investigations where required, and suitability screening for the intended transformation objective. Medical clearance frameworks determine readiness for specific programs.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-label">Stage 02</div>
+        <div class="step-title">Customised Program Design</div>
+        <div class="step-body">A tailored recovery, performance, or aesthetic guidance pathway is designed around the client's current condition, goals, limitations, and expected outcomes. Personalization is central to every plan.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-label">Stage 03</div>
+        <div class="step-title">Guided Execution &amp; Monitoring</div>
+        <div class="step-body">Clients proceed through structured guidance, with periodic reviews to assess progress, response, tolerance, and next-step suitability. Specialist consultations ensure safe, evidence-informed outcomes.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-label">Stage 04</div>
+        <div class="step-title">Review, Refinement &amp; Continuity</div>
+        <div class="step-body">Each transformation phase closes with comprehensive progress review and long-term continuity planning — ensuring sustainable results with attention to safety markers and presentation goals.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div>
+      <p class="section-label">Positioning</p>
+      <h2 class="section-title">Why Elite Clients Choose Carpe Diem</h2>
+      <div class="gold-rule"></div>
+      <div class="why-reasons">
+        <div class="why-reason">
+          <span class="reason-num">01</span>
+          <div class="reason-text">
+            <strong>Bespoke</strong>
+            <span>No two programs are the same — every pathway is uniquely yours.</span>
+          </div>
+        </div>
+        <div class="why-reason">
+          <span class="reason-num">02</span>
+          <div class="reason-text">
+            <strong>Premium</strong>
+            <span>Elevated service standards with personalized attention at every stage.</span>
+          </div>
+        </div>
+        <div class="why-reason">
+          <span class="reason-num">03</span>
+          <div class="reason-text">
+            <strong>Results-Driven</strong>
+            <span>Progress is reviewed, monitored, and refined with deliberate purpose.</span>
+          </div>
+        </div>
+        <div class="why-reason">
+          <span class="reason-num">04</span>
+          <div class="reason-text">
+            <strong>Confidential</strong>
+            <span>Client privacy remains central and non-negotiable throughout the experience.</span>
+          </div>
+        </div>
+        <div class="why-reason">
+          <span class="reason-num">05</span>
+          <div class="reason-text">
+            <strong>Ethical</strong>
+            <span>Consultation-led recommendations aligned to suitability and responsible guidance.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-quote">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">Discipline equals freedom. When you have the discipline to show up every day, to do the work, to stay in the fight — that's when the best opportunities come to you.</p>
+      <p class="quote-attr">Jocko Willink &nbsp;—&nbsp; Elite Navy SEAL</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTELE -->
+<section class="clientele" id="clientele">
+  <div class="clientele-inner">
+    <div>
+      <p class="section-label">Our Clientele</p>
+      <h2 class="section-title">Who We Serve</h2>
+      <div class="gold-rule"></div>
+      <p style="font-size:0.82rem;color:var(--white-muted);font-weight:300;line-height:1.9;">Carpe Diem serves a select and discerning clientele. Privacy, empathy, and discreet handling of sensitive information are central expectations — and remain integral to the experience.</p>
+    </div>
+    <div>
+      <div class="client-types">
+        <span class="client-tag">Post-Surgery Clients</span>
+        <span class="client-tag">Professionals</span>
+        <span class="client-tag">Fitness-Focused Individuals</span>
+        <span class="client-tag">Women Seeking Aesthetic Refinement</span>
+        <span class="client-tag">Aspiring Actors</span>
+        <span class="client-tag">Models &amp; Performers</span>
+        <span class="client-tag">Public-Facing Personalities</span>
+        <span class="client-tag">High-Intent Clients</span>
+        <span class="client-tag">Confidentiality-First Clients</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <p class="section-label" style="text-align:center;">Begin Your Transformation</p>
+    <h2 class="contact-promise">
+      Seize your transformation with a brand designed for<br>
+      <em>serious change</em> and disciplined excellence.
+    </h2>
+    <p class="contact-sub">All consultations are handled with complete discretion. Your journey is confidential.</p>
+    <a href="mailto:info@carpediemfit.com" class="contact-btn">Request a Consultation</a>
+    <p class="contact-note">Strictly by appointment &nbsp;·&nbsp; Complete confidentiality assured</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Carpe Diem Elite Fitness &amp; Transformations</div>
+  <div class="footer-tagline">Seize Your Transformation</div>
+  <div class="footer-copy">&copy; 2026 Carpe Diem Elite Fitness &amp; Transformations. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
